@@ -1,0 +1,11 @@
+{
+  "signal": "SIGTERM",
+  "ext": "js,json",
+  "ignore": [
+    "tests/*"
+  ],
+  "events": {
+    "crash": "touch bin/www"
+  },
+  "delay": 2000
+}

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "nodemon --config ./nodemon.json --watch . ./bin/www",
     "lint": "eslint . --ext .js --quiet && echo '✔ All good!'"
   },
   "dependencies": {
@@ -12,9 +12,11 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "pug": "2.0.0-beta11"
+    "nodemon": "^1.19.1",
+    "pug": "^2.0.3"
   },
   "devDependencies": {
+    "acorn-jsx": "^5.0.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.3"

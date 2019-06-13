@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "coverage": "nyc mocha && nyc check-coverage",
+    "lint": "eslint . --ext .js --quiet && echo '✔ All good!'",
     "start": "nodemon --config ./nodemon.json --watch . ./bin/www",
-    "lint": "eslint . --ext .js --quiet && echo '✔ All good!'"
+    "test": "npm run lint && npm run coverage"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -18,9 +20,17 @@
     "pug": "^2.0.3"
   },
   "devDependencies": {
+    "acorn": "^6.1.1",
     "acorn-jsx": "^5.0.1",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "dirty-chai": "^2.0.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.17.3"
+    "eslint-plugin-import": "^2.17.3",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
+    "sinon": "^7.3.2",
+    "sinon-chai": "^3.3.0"
   }
 }

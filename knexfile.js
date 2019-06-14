@@ -18,7 +18,7 @@ module.exports = {
   production: {
     client: 'mysql',
     connection: {
-      database: 'ma-template-service-production',
+      database: 'ma-users-service-production',
       user: process.env.SQL_USERNAME,
       password: process.env.SQL_PASSWORD,
     },
@@ -29,7 +29,7 @@ module.exports = {
   staging: {
     client: 'mysql',
     connection: {
-      database: 'ma-template-service-staging',
+      database: 'ma-users-service-staging',
       user: process.env.SQL_USERNAME,
       password: process.env.SQL_PASSWORD,
     },
@@ -40,7 +40,7 @@ module.exports = {
   development: {
     client: 'mysql',
     connection: {
-      database: 'ma-template-service-development',
+      database: 'ma-users-service-development',
       user: 'root',
       password: '',
     },

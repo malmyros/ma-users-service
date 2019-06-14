@@ -1,7 +1,7 @@
 const path = require('path');
 
 const migrations = {
-  tableName: 'knexMigrations',
+  tableName: 'knex_migrations',
   directory: path.join(__dirname, 'db', 'migrations'),
 };
 

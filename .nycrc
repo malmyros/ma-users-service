@@ -10,7 +10,10 @@
   "branches": 60,
   "functions": 75,
   "exclude": [
+    "knexfile.js",
+    "coverage",
+    "db",
     "test/**",
-    "coverage"
+    "swagger"
   ]
 }

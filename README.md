@@ -7,3 +7,4 @@ using express.js.
 
 - [Docker](./documentation/docker.md)
 - [Knex](./documentation/knex.md)
+- [Swagger](./documentation/swagger.md)

@@ -1,0 +1,24 @@
+swagger: "2.0"
+
+info:
+  version: "1.0.0"
+  title: "Test API"
+  description: "Just a simple example"
+
+schemes:
+  - "http"
+host: "localhost:3000"
+basePath: "/"
+
+produces:
+  - "text/html"
+  - "application/json"
+
+paths:
+  /ping:
+    get:
+      summary: Do a sanity check
+      description: Returns a simple response
+      responses:
+        200:
+          description: OK

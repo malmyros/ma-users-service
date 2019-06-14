@@ -6,3 +6,4 @@ using express.js.
 ## Table of contents
 
 - [Docker](./documentation/DOCKER.md)
+- [Knex](./documentation/KNEX.md)

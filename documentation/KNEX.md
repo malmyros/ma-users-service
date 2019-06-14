@@ -36,10 +36,10 @@ knex migrate:rollback migration_name
 
 After we run our first migration two new tables would be created in our database
 
-`knexMigrations` and `knexMigrations_lock`
+`knex_migrations` and `knex_migrations_lock`
 
-The `knexMigrations` table contains all the migration that have run where
-the `knexMigrations_lock` is used to prevent multiple processes from running the
+The `knex_migrations` table contains all the migration that have run where
+the `knex_migrations_lock` is used to prevent multiple processes from running the
 same migration batch in the same time.
 
 ## Migration Files
@@ -55,10 +55,10 @@ Example of the `UP` function
 
 ```
 exports.up = (knex) => {
-  return knex.schema.createTableIfNotExists('tableName', (t) => {
+  return knex.schema.createTableIfNotExists('table_name', (t) => {
     t.increments('id').primary().notNullable()
-    t.string('columnName').notNullable()
-    t.string('columnName')
+    t.string('column_name').notNullable()
+    t.string('column_name')
     t.timestamps(false, true)
   }).engine('InnoDB')
     .charset('utf8')
@@ -69,6 +69,6 @@ Example of the `DOWN` function
 
 ```
 exports.down = (knex) => {
-  return knex.schema.dropTableIfExists('tableName')
+  return knex.schema.dropTableIfExists('table_name')
 }
 ```

@@ -2,23 +2,101 @@ swagger: "2.0"
 
 info:
   version: "1.0.0"
-  title: "Test API"
-  description: "Just a simple example"
+  title: "Users API"
+  description: "A users API to register, login and get users."
 
 schemes:
   - "http"
 host: "localhost:3000"
-basePath: "/"
+basePath: "/users"
 
 produces:
   - "text/html"
   - "application/json"
 
 paths:
-  /ping:
-    get:
-      summary: Do a sanity check
-      description: Returns a simple response
+  /register:
+    post:
+      summary: Registers a user.
+      description: Adds a new user in the database.
+      parameters:
+        - name: user
+          in: body
+          description: The user to register.
+          schema:
+            required:
+              - email
+              - password
+            properties:
+              email:
+                type: string
+              password:
+                type: string
       responses:
         200:
-          description: OK
+          description: User successfully registered.
+          schema:
+            required:
+              - status
+              - token
+            properties:
+              status:
+                type: string
+              token:
+                type: string
+        500:
+          description: User couldn't have be registed.
+  /login:
+    post:
+      summary: Logs in a user.
+      description: Logs in an existing user.
+      parameters:
+        - name: user
+          in: body
+          description: The user to log in.
+          schema:
+            required:
+              - email
+              - password
+            properties:
+              email:
+                type: string
+              password:
+                type: string
+      responses:
+        200:
+          description: User successfully logged in.
+          schema:
+            required:
+              - status
+              - token
+            properties:
+              status:
+                type: string
+              token:
+                type: string
+        500:
+          description: User couldn't log in.
+  /user:
+    get:
+      summary: Get a user by id.
+      description: Gets an existing user by id.
+      parameters:
+        - name: id
+          in: query
+          required: true
+          description: The user's id
+          type: integer
+      responses:
+        200:
+          description: User returned.
+        400:
+          description: Please log in.
+          schema:
+            required:
+              - status
+            properties:
+              status:
+                type: string
+        500:
+          description: User couldn't not be found.

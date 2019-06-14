@@ -1,8 +1,8 @@
 const usersModel = require('../models/users');
 
-const createUser = (username, password) => usersModel.createUser(username, password);
+const createUser = (email, password) => usersModel.createUser(email, password);
 
-const getUser = username => usersModel.getUser(username);
+const getUser = email => usersModel.getUser(email);
 
 module.exports = {
   createUser,

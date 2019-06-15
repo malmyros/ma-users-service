@@ -52,7 +52,7 @@ router.get('/user/:id', auth.ensureAuthenticated, (req, res) => {
 
 router.put('/user/:id', auth.ensureAuthenticated, (req, res) => {
   const { firstName, lastName } = req.body;
-  return usersController.updateUser(req.user, firstName, lastName)
+  return usersController.updateUser(req.user.id, firstName, lastName)
     .then(() => {
       res.status(201).json({
         status: 'success',

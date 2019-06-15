@@ -3,10 +3,11 @@ swagger: "2.0"
 info:
   version: "1.0.0"
   title: "Users API"
-  description: "A users API to register, login and get users."
+  description: "The API allows to register, login, get, update and delete a user."
 
 schemes:
   - "http"
+  - "https"
 host: "localhost:3000"
 basePath: "/users"
 
@@ -98,12 +99,21 @@ paths:
           schema:
             required:
               - status
-              - token
+              - user
             properties:
               status:
                 type: string
               user:
-                type: integer
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  email:
+                    type: string
+                  firstName:
+                    type: string
+                  lastName:
+                    type: string
         400:
           description: Please log in.
           schema:

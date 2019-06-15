@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const moment = require('moment');
 const jwt = require('jwt-simple');
-const usersModel = require('../models/users');
+const usersController = require('../controlers/users');
 
 const comparePass = (userPassword, databasePassword) => bcrypt.compareSync(userPassword, databasePassword);
 
@@ -37,13 +37,16 @@ const ensureAuthenticated = (req, res, next) => {
       });
     }
 
-    return usersModel.getUserById(payload.sub)
+    return usersController.getUserById(payload.sub)
       .then((user) => {
-        req.user = user.id;
+        req.user = user;
         return next();
-      }).catch(() => res.status(500).json({
-        status: 'error',
-      }));
+      }).catch((err1) => {
+        console.log('err', err1)
+        res.status(500).json({
+          status: 'error',
+        })
+      });
   });
 };
 

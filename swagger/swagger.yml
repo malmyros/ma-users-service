@@ -16,6 +16,15 @@ produces:
   - "application/json"
 
 paths:
+  /ping:
+    get:
+      summary: Health check.
+      description: A health check to ping the service
+      produces:
+        - plain/text
+      responses:
+        200:
+          description: The service is up and running.
   /register:
     post:
       summary: Registers a user.

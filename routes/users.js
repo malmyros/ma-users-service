@@ -4,6 +4,10 @@ const auth = require('../helpers/auth');
 
 const router = express.Router();
 
+router.get('/ping', (req, res) => {
+  res.status(200).send('pong');
+});
+
 router.post('/register', (req, res) => {
   const { email, password } = req.body;
   usersController.createUser(email, password)

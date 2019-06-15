@@ -1,6 +1,6 @@
 {
   "signal": "SIGTERM",
-  "ext": "js,json",
+  "ext": "js,json,pug",
   "ignore": [
     "tests/*"
   ],

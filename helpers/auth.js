@@ -41,11 +41,10 @@ const ensureAuthenticated = (req, res, next) => {
       .then((user) => {
         req.user = user;
         return next();
-      }).catch((err1) => {
-        console.log('err', err1)
+      }).catch(() => {
         res.status(500).json({
           status: 'error',
-        })
+        });
       });
   });
 };

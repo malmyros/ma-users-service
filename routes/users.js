@@ -43,16 +43,23 @@ router.post('/login', (req, res) => {
     });
 });
 
-router.get('/user', auth.ensureAuthenticated, (req, res) => {
+router.get('/user/:id', auth.ensureAuthenticated, (req, res) => {
   res.status(200).json({
     status: 'success',
     user: req.user,
-  }).catch((err) => {
-    res.status(500).json({
-      status: 'error',
-      message: err,
-    });
   });
 });
+
+router.delete('/user/:id', auth.ensureAuthenticated, (req, res) => usersController.deleteUser(req.user)
+  .then(() => {
+    res.status(200).json({
+      status: 'success',
+      user: req.user,
+    });
+  }).catch(() => {
+    res.status(404).json({
+      status: 'error',
+    });
+  }));
 
 module.exports = router;

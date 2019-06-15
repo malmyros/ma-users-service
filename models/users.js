@@ -15,7 +15,7 @@ const getUser = email => knex('users').where({ email }).first();
 
 const getUserById = id => knex('users').where({ id: parseInt(id, 10) }).first();
 
-const deleteUser = email => knex('users').where({ email }).del();
+const deleteUser = id => knex('users').where({ id }).del();
 
 module.exports = {
   createUser,

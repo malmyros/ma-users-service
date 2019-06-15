@@ -77,21 +77,21 @@ paths:
                 type: string
         500:
           description: User couldn't log in.
-  /user:
+  /user/{id}:
     get:
       summary: Get a user by ID.
       description: Gets an existing user by ID.
       parameters:
-        - name: ID
-          in: query
+        - name: id
+          in: path
           required: true
           description: User ID.
           type: integer
         - name: authorization
-          description: JWT authorisation token.
           in: header
-          type: string
           required: true
+          description: JWT authorisation token.
+          type: string
       responses:
         200:
           description: User returned.
@@ -106,6 +106,40 @@ paths:
                 type: integer
         400:
           description: Please log in.
+          schema:
+            required:
+              - status
+            properties:
+              status:
+                type: string
+    delete:
+      summary: Delete a user by ID.
+      description: Deletes an existing user by ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: User ID.
+          type: integer
+        - name: authorization
+          in: header
+          required: true
+          description: JWT authorisation token.
+          type: string
+      responses:
+        200:
+          description: User deleted.
+          schema:
+            required:
+              - status
+              - user
+            properties:
+              status:
+                type: string
+              user:
+                type: integer
+        404:
+          description: User could not be found.
           schema:
             required:
               - status

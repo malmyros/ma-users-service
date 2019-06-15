@@ -79,17 +79,31 @@ paths:
           description: User couldn't log in.
   /user:
     get:
-      summary: Get a user by id.
-      description: Gets an existing user by id.
+      summary: Get a user by ID.
+      description: Gets an existing user by ID.
       parameters:
-        - name: id
+        - name: ID
           in: query
           required: true
-          description: The user's id
+          description: User ID.
           type: integer
+        - name: authorization
+          description: JWT authorisation token.
+          in: header
+          type: string
+          required: true
       responses:
         200:
           description: User returned.
+          schema:
+            required:
+              - status
+              - token
+            properties:
+              status:
+                type: string
+              user:
+                type: integer
         400:
           description: Please log in.
           schema:
@@ -98,5 +112,3 @@ paths:
             properties:
               status:
                 type: string
-        500:
-          description: User couldn't not be found.

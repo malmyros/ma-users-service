@@ -29,8 +29,7 @@ const ensureAuthenticated = (req, res, next) => {
     });
   }
 
-  const header = req.headers.authorization.split(' ');
-  const token = header[1];
+  const token = req.headers.authorization;
   decodeToken(token, (err, payload) => {
     if (err) {
       return res.status(401).json({

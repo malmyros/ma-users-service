@@ -1,5 +1,6 @@
 {
   "name": "ma-template-service",
+  "owner": "Michail Almyros",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -7,6 +8,10 @@
     "lint": "eslint . --ext .js --quiet && echo '✔ All good!'",
     "start": "nodemon --config ./nodemon.json --watch . ./bin/www",
     "test": "npm run lint && npm run coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/malmyros/ma-users-service.git"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

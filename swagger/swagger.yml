@@ -20,7 +20,7 @@ paths:
       summary: Registers a user.
       description: Adds a new user in the database.
       parameters:
-        - name: user
+        - name: params
           in: body
           description: The user to register.
           schema:
@@ -51,7 +51,7 @@ paths:
       summary: Logs in a user.
       description: Logs in an existing user.
       parameters:
-        - name: user
+        - name: params
           in: body
           description: The user to log in.
           schema:
@@ -79,8 +79,8 @@ paths:
           description: User couldn't log in.
   /user/{id}:
     get:
-      summary: Get a user by ID.
-      description: Gets an existing user by ID.
+      summary: Gets a user.
+      description: Gets an existing user.
       parameters:
         - name: id
           in: path
@@ -112,9 +112,44 @@ paths:
             properties:
               status:
                 type: string
+    put:
+      summary: Updates a user.
+      description: Updates an existing user.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: User ID.
+          type: integer
+        - name: authorization
+          in: header
+          required: true
+          description: JWT authorisation token.
+          type: string
+        - name: params
+          in: body
+          description: The user to register.
+          schema:
+            required:
+              - firstName
+              - lastName
+            properties:
+              firstName:
+                type: string
+              lastName:
+                type: string
+      responses:
+        201:
+          description: User updated.
+          schema:
+            required:
+              - status
+            properties:
+              status:
+                type: string
     delete:
-      summary: Delete a user by ID.
-      description: Deletes an existing user by ID.
+      summary: Delete a user.
+      description: Deletes an existing user.
       parameters:
         - name: id
           in: path

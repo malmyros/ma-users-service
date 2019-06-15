@@ -17,9 +17,13 @@ const getUserById = id => knex('users').where({ id: parseInt(id, 10) }).first();
 
 const deleteUser = id => knex('users').where({ id }).del();
 
+const updateUser = (id, firstName, lastName) => knex('users').where({ id })
+  .update({ first_name: firstName, last_name: lastName });
+
 module.exports = {
   createUser,
   getUser,
   getUserById,
   deleteUser,
+  updateUser,
 };

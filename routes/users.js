@@ -50,6 +50,20 @@ router.get('/user/:id', auth.ensureAuthenticated, (req, res) => {
   });
 });
 
+router.put('/user/:id', auth.ensureAuthenticated, (req, res) => {
+  const { firstName, lastName } = req.body;
+  return usersController.updateUser(req.user, firstName, lastName)
+    .then(() => {
+      res.status(201).json({
+        status: 'success',
+      });
+    }).catch(() => {
+      res.status(404).json({
+        status: 'not found',
+      });
+    });
+});
+
 router.delete('/user/:id', auth.ensureAuthenticated, (req, res) => usersController.deleteUser(req.user)
   .then(() => {
     res.status(200).json({

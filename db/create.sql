@@ -1,3 +1,3 @@
-CREATE DATABASE IF NOT EXISTS `ma-users-service-production`;
-CREATE DATABASE IF NOT EXISTS `ma-users-service-staging`;
-CREATE DATABASE IF NOT EXISTS `ma-users-service-development`;
+CREATE DATABASE IF NOT EXISTS `ma_users_service_production`;
+CREATE DATABASE IF NOT EXISTS `ma_users_service_staging`;
+CREATE DATABASE IF NOT EXISTS `ma_users_service_development`;

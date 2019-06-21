@@ -47,16 +47,16 @@ router.post('/login', (req, res) => {
     });
 });
 
-router.get('/user/:id', auth.ensureAuthenticated, (req, res) => {
+router.get('/user/:userId', auth.ensureAuthenticated, (req, res) => {
   res.status(200).json({
     status: 'success',
     user: req.user,
   });
 });
 
-router.put('/user/:id', auth.ensureAuthenticated, (req, res) => {
+router.put('/user/:userId', auth.ensureAuthenticated, (req, res) => {
   const { firstName, lastName } = req.body;
-  return usersController.updateUser(req.user.id, firstName, lastName)
+  return usersController.updateUser(req.user.userId, firstName, lastName)
     .then(() => {
       res.status(201).json({
         status: 'success',
@@ -68,7 +68,7 @@ router.put('/user/:id', auth.ensureAuthenticated, (req, res) => {
     });
 });
 
-router.delete('/user/:id', auth.ensureAuthenticated, (req, res) => usersController.deleteUser(req.user)
+router.delete('/user/:userId', auth.ensureAuthenticated, (req, res) => usersController.deleteUser(req.user)
   .then(() => {
     res.status(200).json({
       status: 'success',

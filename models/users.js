@@ -12,21 +12,21 @@ const createUser = (email, password) => {
 };
 
 const getUser = email => knex('users')
-  .select(['id', 'email', 'first_name', 'last_name'])
+  .select(['user_id', 'email', 'first_name', 'last_name'])
   .where({ email })
   .first();
 
-const getUserById = id => knex('users')
-  .select(['id', 'email', 'first_name', 'last_name'])
-  .where({ id: parseInt(id, 10) })
+const getUserById = userId => knex('users')
+  .select(['user_id', 'email', 'first_name', 'last_name'])
+  .where({ user_id: parseInt(userId, 10) })
   .first();
 
-const deleteUser = id => knex('users')
-  .where({ id })
+const deleteUser = userId => knex('users')
+  .where({ user_id: userId })
   .del();
 
-const updateUser = (id, firstName, lastName) => knex('users')
-  .where({ id })
+const updateUser = (userId, firstName, lastName) => knex('users')
+  .where({ user_id: userId })
   .update({ first_name: firstName, last_name: lastName });
 
 module.exports = {
